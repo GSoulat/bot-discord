@@ -7,7 +7,6 @@ WORKDIR /
 COPY . .
 
 RUN chmod 0644 /crontab
-RUN /crontab /crontab
 
 # run crond as main process of container
 CMD ["cron", "-f"]
