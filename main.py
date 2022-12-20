@@ -16,7 +16,9 @@ client = discord.Client(intents=intents)
 
 @tasks.loop(minutes=1)
 async def test():
+    print(f'test channel : {CHANNEL_ID}')
     channel = client.get_channel(CHANNEL_ID)
+    print(channel)
     await channel.send("test")
 
 @client.event
