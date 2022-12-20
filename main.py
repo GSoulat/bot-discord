@@ -19,7 +19,7 @@ client = discord.Client(intents=intents)
 @tasks.loop(minutes=1)
 async def test():
     logging.info(f"test channel info : {CHANNEL_ID}")
-    logging.INFO(f"test channel INFO : {CHANNEL_ID}")
+    # logging.INFO(f"test channel INFO : {CHANNEL_ID}")
     await client.wait_until_ready()
     channel = client.get_channel(CHANNEL_ID)
     await channel.send("test toutes les minutes")
