@@ -29,7 +29,7 @@ async def time_check():
     message_channel=client.get_channel(int(CHANNEL_ID))
     while not client.is_closed:
         now=datetime.strftime(datetime.now(),'%H:%M')
-        if now.hour() == 22 and now.minute() == 39:
+        if now.hour() == 21 and now.minute() == 40:
             message= 'Bienvenue les coco'
             await message_channel.send(message)
             time=90
