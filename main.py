@@ -1,6 +1,7 @@
-import discord
+import discord, asyncio
 import pandas as pd
 from discord.ext import commands, tasks
+from datetime import datetime
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
@@ -9,6 +10,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 CHANNEL_ID = os.getenv("CHANNEL_ID")
+send_time='23:27'
 
 intents = discord.Intents.all()
 intents.message_content = True
@@ -16,19 +18,34 @@ intents.message_content = True
 client = discord.Client(intents=intents)
     
     
-@tasks.loop(minutes=1)
-async def test():
-    # logging.info(f"test channel info : {CHANNEL_ID}")
-    # logging.INFO(f"test channel INFO : {CHANNEL_ID}")
+# @tasks.loop(minutes=1)
+# async def test():
+#     await client.wait_until_ready()
+#     channel = client.get_channel(int(CHANNEL_ID))
+#     await channel.send("test toutes les minutes")
+
+async def time_check():
     await client.wait_until_ready()
-    channel = client.get_channel(int(CHANNEL_ID))
-    await channel.send("test toutes les minutes")
+    message_channel=client.get_channel(int(CHANNEL_ID))
+    while not client.is_closed:
+        now=datetime.strftime(datetime.now(),'%H:%M')
+        if now.hour() == 1 and now.minute() == 52:
+            message= 'Bienvenue les coco'
+            await message_channel.send(message)
+            time=90
+        else:
+            time=1
+        await asyncio.sleep(time)
+
+
 
 
 @client.event
 async def on_ready():
     print(f"We have logged in as {client.user}")
-    test.start()
+    client.loop.create_task(time_check())
+    # test.start()
+
 
 
 @client.event
