@@ -14,11 +14,6 @@ intents = discord.Intents.all()
 intents.message_content = True
 
 client = discord.Client(intents=intents)
-
-@called.before_loop
-async def before():
-    await client.wait_until_ready()
-    print("Finished waiting")
     
     
 @tasks.loop(minutes=1)
