@@ -12,4 +12,4 @@ RUN pip install -r requirements.txt
 
 # Run the application:
 COPY . .
-CMD ["python", "main.py"]
+CMD ["crond", "-f"]
