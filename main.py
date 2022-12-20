@@ -10,7 +10,7 @@ import os
 
 TOKEN = os.getenv("TOKEN")
 CHANNEL_ID = os.getenv("CHANNEL_ID")
-send_time='23:30'
+send_time='21:37'
 
 intents = discord.Intents.all()
 intents.message_content = True
