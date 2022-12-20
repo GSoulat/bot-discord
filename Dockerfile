@@ -12,6 +12,8 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
+ADD main.py /
+RUN chmod a+x main.py
 
 # Run the application:
 COPY . .
