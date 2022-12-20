@@ -1,8 +1,13 @@
 import discord
 from discord.ext import commands, tasks
 import pandas as pd
-TOKEN = 'MTAxOTI0MzgxMzkyMDg0NTgyNg.GLsfnV.q1SyVwcw196qpszKLMst_MxraBUX5HuA2eD-b8'
-CHANNEL_ID = 1050490216617619459
+from dotenv import load_dotenv
+load_dotenv(override=True)
+import os
+
+
+TOKEN = os.getenv("TOKEN")
+CHANNEL_ID = os.getenv("CHANNEL_ID")
 
 intents = discord.Intents.all()
 intents.message_content = True
