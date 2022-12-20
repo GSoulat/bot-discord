@@ -1,5 +1,7 @@
-from crontab import CronTab
-cron = CronTab(user='root')
-job = cron.new(command='echo hello_world')
-job.minute.every(1)
-cron.write()
+
+
+import datetime
+
+
+if __name__ == "__main__":
+    print(f"Running script at {datetime.now()}")
