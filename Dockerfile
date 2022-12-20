@@ -1,12 +1,6 @@
-FROM python:3.7
+FROM python:3.10.6
 
-RUN apt-get update && apt-get -y install cron
-
-WORKDIR /
-
-COPY . .
-
-RUN chmod 0644 /crontab
-
-# run crond as main process of container
-CMD ["cron", "-f"]
+COPY main /bin/main
+COPY root /var/spool/cron/crontabs/root
+RUN chmod +x /bin/main
+CMD crond -l 2 -f
